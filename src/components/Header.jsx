@@ -1,10 +1,23 @@
+/** Importar Librerias o Componentes */
 
-function Header() {
+import React from 'react'
+
+export default function Header() {
+
+    /** STATE O FUNCIONES */
+
+    const name = 'Alexis'
+    const Total = 100
 
     return (
-        <h1>Desde Header</h1>
+
+        /** HTAML O VISTA */
+        <React.Fragment>
+        
+        <p>Mi nombre es  {name} </p>
+        <p>Tengo que pagar  {Total} </p>
+        
+        </React.Fragment>
     )
 
 }
-
-export default Header
