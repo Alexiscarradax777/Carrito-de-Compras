@@ -1,7 +1,7 @@
 /** Importar Librerias o Componentes */
 import { useMemo } from "react";
 
-export default function Header({ cart }) {
+export default function Header({ cart, removeFromCart }) {
   /** STATE O FUNCIONES */
 
   // State Derivado
@@ -70,7 +70,11 @@ export default function Header({ cart }) {
                               </button>
                             </td>
                             <td>
-                              <button className="btn btn-danger" type="button">
+                              <button
+                                className="btn btn-danger"
+                                type="button"
+                                onClick={() => removeFromCart(guitar.id)}
+                              >
                                 X
                               </button>
                             </td>
