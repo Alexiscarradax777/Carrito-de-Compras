@@ -6,6 +6,7 @@ export default function Header({
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,
+  clearCart,
 }) {
   /** STATE O FUNCIONES */
 
@@ -102,7 +103,10 @@ export default function Header({
                   </>
                 )}
 
-                <button className="btn btn-dark w-100 mt-3 p-2">
+                <button
+                  className="btn btn-dark w-100 mt-3 p-2"
+                  onClick={clearCart}
+                >
                   Vaciar Carrito
                 </button>
               </div>
