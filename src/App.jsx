@@ -8,11 +8,15 @@ function App() {
   const [data, setData] = useState(db);
   const [cart, setCart] = useState([]);
 
+  const MIN_ITEMS = 1;
+  const MAX_ITEMS = 5;
+
   function addToCart(item) {
     const itemExists = cart.findIndex((guitar) => guitar.id === item.id);
 
     // existe en el carrito
     if (itemExists >= 0) {
+      if (cart[itemExists].quantity >= MAX_ITEMS) return;
       const updateCart = [...cart];
       updateCart[itemExists].quantity++;
       setCart(updateCart);
@@ -26,9 +30,41 @@ function App() {
     setCart((prevCart) => prevCart.filter((guitar) => guitar.id !== id));
   }
 
+  function decreaseQuantity(id) {
+    const updateCart = cart.map((item) => {
+      if (item.id === id && item.quantity > MIN_ITEMS) {
+        return {
+          ...item,
+          quantity: item.quantity - 1,
+        };
+      }
+      return item;
+    });
+
+    setCart(updateCart);
+  }
+
+  function increaseQuantity(id) {
+    const updatedCaart = cart.map((item) => {
+      if (item.id === id && item.quantity < MAX_ITEMS) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+        };
+      }
+      return item;
+    });
+    setCart(updatedCaart);
+  }
+
   return (
     <>
-      <Header cart={cart} removeFromCart={removeFromCart} />
+      <Header
+        cart={cart}
+        removeFromCart={removeFromCart}
+        increaseQuantity={increaseQuantity}
+        decreaseQuantity={decreaseQuantity}
+      />
 
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>

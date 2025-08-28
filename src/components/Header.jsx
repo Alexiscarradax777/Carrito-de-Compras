@@ -1,7 +1,12 @@
 /** Importar Librerias o Componentes */
 import { useMemo } from "react";
 
-export default function Header({ cart, removeFromCart }) {
+export default function Header({
+  cart,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+}) {
   /** STATE O FUNCIONES */
 
   // State Derivado
@@ -61,11 +66,19 @@ export default function Header({ cart, removeFromCart }) {
                             <td>{guitar.name}</td>
                             <td className="fw-bold">${guitar.price} </td>
                             <td className="flex align-items-start gap-4">
-                              <button type="button" className="btn btn-dark">
+                              <button
+                                type="button"
+                                className="btn btn-dark"
+                                onClick={() => decreaseQuantity(guitar.id)}
+                              >
                                 -
                               </button>
                               {guitar.quantity}
-                              <button type="button" className="btn btn-dark">
+                              <button
+                                type="button"
+                                className="btn btn-dark"
+                                onClick={() => increaseQuantity(guitar.id)}
+                              >
                                 +
                               </button>
                             </td>
