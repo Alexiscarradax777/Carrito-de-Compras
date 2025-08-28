@@ -3,6 +3,9 @@
 export default function Header({ cart }) {
   /** STATE O FUNCIONES */
 
+  // State Derivado
+  const isEmpty = () => cart.length === 0;
+
   /** HTAML O VISTA */
   return (
     <header className="py-5 header">
@@ -26,7 +29,7 @@ export default function Header({ cart }) {
               />
 
               <div id="carrito" className="bg-white p-3">
-                {cart.length === 0 ? (
+                {isEmpty() ? (
                   <p className="text-center">El carrito esta vacio</p>
                 ) : (
                   <table className="w-100 table">
