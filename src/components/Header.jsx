@@ -1,5 +1,4 @@
 /** Importar Librerias o Componentes */
-import { useMemo } from "react";
 
 export default function Header({
   cart,
@@ -7,16 +6,9 @@ export default function Header({
   increaseQuantity,
   decreaseQuantity,
   clearCart,
+  isEmpty,
+  cartTotal,
 }) {
-  /** STATE O FUNCIONES */
-
-  // State Derivado
-  const isEmpty = useMemo(() => cart.length === 0, [cart]);
-  const cartTotal = useMemo(
-    () => cart.reduce((total, item) => total + item.quantity * item.price, 0),
-    [cart]
-  );
-
   /** HTAML O VISTA */
   return (
     <header className="py-5 header">
